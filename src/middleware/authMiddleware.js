@@ -23,7 +23,7 @@ export const protect = async (req, res, next) => {
       status: "fail",
       message: "invalid token",
     });}
-     else if(user.role == "user" && user.active){
+     else if(user.role == "user" && user.active == "false"){
       return res.status(401).json({
         status: "fail",
         message: "your account is not activeted",

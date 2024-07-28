@@ -6,11 +6,20 @@ import emergencyRoute from "./src/emergency/emergencyRoutes.js";
 import { errorController } from "./src/error/errorController.js";
 import cloudinary from "cloudinary"
 import * as dotenv from "dotenv";
+
+const cors = require("cors");
+
 dotenv.config();
 const app = Express();
 app.use(Express.urlencoded({ extended: false }));
 app.use(Express.static("public"));
 connection();
+
+
+app.use(cors());
+app.options('*', cors());
+
+
 app.use(Express.json());
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
